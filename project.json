@@ -1,0 +1,29 @@
+{
+  "name": "Attended_FrameWork",
+  "description": "Attended Robot REFramework",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "2.4.6884.25683",
+    "UiPath.Credentials.Activities": "1.1.6479.13204",
+    "UiPath.UIAutomation.Activities": "18.3.6877.28298",
+    "UiPath.System.Activities": "18.3.6877.28276",
+    "Microsoft.Activities.Extensions": "2.0.6.9",
+    "Microsoft.Activities": "1.0.1",
+    "UiPath.Mail.Activities": "1.2.6863.29868"
+  },
+  "schemaVersion": "3.2",
+  "studioVersion": "18.2",
+  "projectVersion": "1.0.6836.24123",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ]
+  },
+  "projectType": "Workflow",
+  "libraryOptions": {
+    "includeOriginalXaml": false,
+    "privateWorkflows": []
+  }
+}
