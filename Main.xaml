@@ -34,6 +34,7 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -62,6 +63,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="REFrameWork for Attended Robot, based on the REFrameWork for simple and linear processes.&#xA;Compatible with the REFrameWork in terms of reusable components, logging fields and messages." DisplayName="Main" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -69,18 +71,28 @@
       <Variable x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" Name="Config" />
       <Variable x:TypeArguments="x:String" Default="[Environment.UserDomainName+&quot;\&quot;+ Environment.UserName+&quot;_&quot;+Environment.MachineName+&quot;_&quot;+Now.ToString(&quot;yyyy/MM/dd_HH:mm:ss.fff&quot;)]" Name="TransactionID" />
       <Variable x:TypeArguments="s:Exception" Name="ProcessException" />
-      <Variable x:TypeArguments="x:String" Default="Data\Config.xlsx" Name="configPath" />
+      <Variable x:TypeArguments="x:String" Name="configPath" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_6">
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Init workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\Init.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="Config">[Config]</InOutArgument>
-            <InOutArgument x:TypeArguments="x:String" x:Key="TransactionID">[TransactionID]</InOutArgument>
-            <InOutArgument x:TypeArguments="s:Exception" x:Key="ProcessException">[ProcessException]</InOutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="configPath">[configPath]</InArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-        </ui:InvokeWorkflowFile>
+      <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+        <Sequence sap2010:Annotation.AnnotationText="Reading the settings from the Config file and Orchestrator Assets - " DisplayName="init" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Assign sap2010:Annotation.AnnotationText="相対パスをカスタムアクティビティに渡すと、アクティビティの場所からのフルパスになるので、呼びだし元からフルパスを生成して渡すことで、ワークフローファイルからの相対場所にする" DisplayName="代入" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[configPath]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[System.IO.Path.GetFullPath("Data\Config.xlsx")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Init workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Framework\Init.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="Config">[Config]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="TransactionID">[TransactionID]</InOutArgument>
+              <InOutArgument x:TypeArguments="s:Exception" x:Key="ProcessException">[ProcessException]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="configPath">[configPath]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
         <FlowStep.Next>
           <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
             <TryCatch sap2010:Annotation.AnnotationText="Actual Business Process" DisplayName="Process" sap2010:WorkflowViewState.IdRef="TryCatch_3">
@@ -134,14 +146,29 @@
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>dyZaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbBpDA4oBDwIBAUY0RtwBAgEDSDRIRgIBAkwJUyECARtWDYIBGAIBBE5nTm8CASNQU1BlAgEhT01PXAIBH1FHUVMCAR1MtQFMygECARxYEWQcAgETehGAASkCAQtsFXUgAgEFWRNeJQIBGF8TYysCARR8b3x3AgERflt+bQIBD31VfWQCAQ16wAF62AECAQxtF3QgAgEGXF9cgwECARpbVVtvAgEZYXRhfAIBFl/CAV/QAQIBFXJFclACAQlvRm9YAgEH</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dyZaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbB1FA5YBDwIBAUg0SNwBAgECTglfFAIBGmINjgEYAgEDTwtWFAIBJVcLXiMCARtkEXAcAgEShgERjAEpAgEKeBWBASACAQRUNlRmAgEoUTdRQwIBJllpWXECASNbVVtnAgEhWk9aXgIBH1xJXFUCAR1XtwFXzAECARxlE2olAgEXaxNvKwIBE4gBb4gBdwIBEIoBW4oBbQIBDokBVYkBZAIBDIYBwAGGAdgBAgELeReAASACAQVoX2iDAQIBGWdVZ28CARhtdG18AgEVa8IBa9ABAgEUfkV+UAIBCHtGe1gCAQY=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_5" sap:VirtualizedContainerService.HintSize="314,87">
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="314,147">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_7" sap:VirtualizedContainerService.HintSize="314,87">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="336,440">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -202,12 +229,12 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_6">
+      <sap2010:ViewStateData Id="FlowStep_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200,144.5</av:Point>
-            <av:Size x:Key="ShapeSize">200,51</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,195.5 300,290.5</av:PointCollection>
+            <av:Point x:Key="ShapeLocation">200,114.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,108</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,222.5 300,290.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -217,7 +244,7 @@
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,144.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,114.5</av:PointCollection>
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
