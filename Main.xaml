@@ -71,11 +71,14 @@
       <Variable x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" Name="Config" />
       <Variable x:TypeArguments="x:String" Default="[Environment.UserDomainName+&quot;\&quot;+ Environment.UserName+&quot;_&quot;+Environment.MachineName+&quot;_&quot;+Now.ToString(&quot;yyyy/MM/dd_HH:mm:ss.fff&quot;)]" Name="TransactionID" />
       <Variable x:TypeArguments="s:Exception" Name="ProcessException" />
-      <Variable x:TypeArguments="x:String" Name="configPath" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_7">
         <Sequence sap2010:Annotation.AnnotationText="Reading the settings from the Config file and Orchestrator Assets - " DisplayName="init" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="configPath" />
+            <Variable x:TypeArguments="x:String" Default="c:/temp/Config.xlsx" Name="devConfigPath" />
+          </Sequence.Variables>
           <Assign sap2010:Annotation.AnnotationText="相対パスをカスタムアクティビティに渡すと、アクティビティの場所からのフルパスになるので、呼びだし元からフルパスを生成して渡すことで、ワークフローファイルからの相対場所にする" DisplayName="代入" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[configPath]</OutArgument>
@@ -90,6 +93,7 @@
               <InOutArgument x:TypeArguments="x:String" x:Key="TransactionID">[TransactionID]</InOutArgument>
               <InOutArgument x:TypeArguments="s:Exception" x:Key="ProcessException">[ProcessException]</InOutArgument>
               <InArgument x:TypeArguments="x:String" x:Key="configPath">[configPath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="devConfigPath">[devConfigPath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
@@ -146,7 +150,7 @@
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>dyZaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbB1FA5YBDwIBAUg0SNwBAgECTglfFAIBGmINjgEYAgEDTwtWFAIBJVcLXiMCARtkEXAcAgEShgERjAEpAgEKeBWBASACAQRUNlRmAgEoUTdRQwIBJllpWXECASNbVVtnAgEhWk9aXgIBH1xJXFUCAR1XtwFXzAECARxlE2olAgEXaxNvKwIBE4gBb4gBdwIBEIoBW4oBbQIBDokBVYkBZAIBDIYBwAGGAdgBAgELeReAASACAQVoX2iDAQIBGWdVZ28CARhtdG18AgEVa8IBa9ABAgEUfkV+UAIBCHtGe1gCAQY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dyZaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbB9FA5oBDwIBAUg0SNwBAgECTQljFAIBGmYNkgEYAgEDUDpQTwIBG1ILWRQCAShaC2IjAgEcaBF0HAIBEooBEZABKQIBCnwVhQEgAgEEVzZXZgIBK1Q3VEMCASlgTGBbAgEmXGlccQIBJF5VXmcCASJdT11eAgEgX0lfVQIBHlq3AVrMAQIBHWkTbiUCARdvE3MrAgETjAFvjAF3AgEQjgFbjgFtAgEOjQFVjQFkAgEMigHAAYoB2AECAQt9F4QBIAIBBWxfbIMBAgEZa1VrbwIBGHF0cXwCARVvwgFv0AECARSCAUWCAVACAQh/Rn9YAgEG</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
