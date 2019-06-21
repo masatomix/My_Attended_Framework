@@ -69,6 +69,7 @@
       <Variable x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" Name="Config" />
       <Variable x:TypeArguments="x:String" Default="[Environment.UserDomainName+&quot;\&quot;+ Environment.UserName+&quot;_&quot;+Environment.MachineName+&quot;_&quot;+Now.ToString(&quot;yyyy/MM/dd_HH:mm:ss.fff&quot;)]" Name="TransactionID" />
       <Variable x:TypeArguments="s:Exception" Name="ProcessException" />
+      <Variable x:TypeArguments="x:String" Default="Data\Config.xlsx" Name="configPath" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_6">
@@ -77,6 +78,7 @@
             <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="Config">[Config]</InOutArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="TransactionID">[TransactionID]</InOutArgument>
             <InOutArgument x:TypeArguments="s:Exception" x:Key="ProcessException">[ProcessException]</InOutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="configPath">[configPath]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <FlowStep.Next>
@@ -132,11 +134,11 @@
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>dyZaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbBhDA4gBDwIBAUY0RtwBAgECSwlRIQIBGlQNgAEYAgEDTWdNbwIBIE9TT2UCAR5OTU5cAgEcS7UBS8oBAgEbVhFiHAIBEngRfikCAQpqFXMgAgEEVxNcJQIBF10TYSsCARN6b3p3AgEQfFt8bQIBDntVe2QCAQx4wAF42AECAQtrF3IgAgEFWl9agwECARlZVVlvAgEYX3RffAIBFV3CAV3QAQIBFHBFcFACAQhtRm1YAgEG</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dyZaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbBpDA4oBDwIBAUY0RtwBAgEDSDRIRgIBAkwJUyECARtWDYIBGAIBBE5nTm8CASNQU1BlAgEhT01PXAIBH1FHUVMCAR1MtQFMygECARxYEWQcAgETehGAASkCAQtsFXUgAgEFWRNeJQIBGF8TYysCARR8b3x3AgERflt+bQIBD31VfWQCAQ16wAF62AECAQxtF3QgAgEGXF9cgwECARpbVVtvAgEZYXRhfAIBFl/CAV/QAQIBFXJFclACAQlvRm9YAgEH</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_5" sap:VirtualizedContainerService.HintSize="200,51">
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_5" sap:VirtualizedContainerService.HintSize="314,87">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -183,7 +185,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="InvokeWorkflowFile_6" sap:VirtualizedContainerService.HintSize="314,87" />
-      <sap2010:ViewStateData Id="TryCatch_3" sap:VirtualizedContainerService.HintSize="418,341">
+      <sap2010:ViewStateData Id="TryCatch_3" sap:VirtualizedContainerService.HintSize="200,78">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

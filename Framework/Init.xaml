@@ -14,6 +14,7 @@
     <x:Property Name="Config" Type="InOutArgument(scg:Dictionary(x:String, ui:GenericValue))" />
     <x:Property Name="TransactionID" Type="InOutArgument(x:String)" />
     <x:Property Name="ProcessException" Type="InOutArgument(s:Exception)" />
+    <x:Property Name="configPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -68,7 +69,6 @@
       <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Init" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -80,7 +80,7 @@
           </Sequence.Variables>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">[configPath]</InArgument>
               <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="out_Config">[Config]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
@@ -100,7 +100,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <sads:DebugSymbol.Symbol>dzBaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXEZyYW1ld29ya1xJbml0LnhhbWwLSgNoDgIBAUsFZhACAQJNCVgUAgEGYA1iGAIBA1ELVyMCAQdhD2HwAgIBBFVrVXMCAQtRwgFR4gECAQpUUFRqAgEJU0xTXAIBCGFNYcMCAgEF</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzBaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXEZyYW1ld29ya1xJbml0LnhhbWwLSgNoDgIBAUsFZhACAQJNCVgUAgEGYA1iGAIBA1ELVyMCAQdhD2HwAgIBBFVrVXMCAQxRwgFR4gECAQtUUFRqAgEKU0xTWAIBCGFNYcMCAgEF</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -152,7 +152,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Init_1" sap:VirtualizedContainerService.HintSize="480,724" />
+      <sap2010:ViewStateData Id="Init_1" sap:VirtualizedContainerService.HintSize="480,684" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
