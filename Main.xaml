@@ -1,6 +1,7 @@
 ﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:kf="clr-namespace:kino_UiPath_MyAttendedFramework.Framework;assembly=kino.UiPath.MyAttendedFramework"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
  xmlns:s="clr-namespace:System;assembly=mscorlib"
@@ -91,15 +92,7 @@
               </Assign>
             </If.Then>
           </If>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Init workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Framework\Init.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="Config">[Config]</InOutArgument>
-              <InOutArgument x:TypeArguments="x:String" x:Key="TransactionID">[TransactionID]</InOutArgument>
-              <InOutArgument x:TypeArguments="s:Exception" x:Key="ProcessException">[ProcessException]</InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="configPath">[configPath]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="devConfigPath">[devConfigPath]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
+          <kf:Init Config="[Config]" ProcessException="[ProcessException]" TransactionID="[TransactionID]" configPath="[configPath]" devConfigPath="[devConfigPath]" sap2010:WorkflowViewState.IdRef="Init_1" />
         </Sequence>
         <FlowStep.Next>
           <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
@@ -139,13 +132,7 @@
                 </Catch>
               </TryCatch.Catches>
               <TryCatch.Finally>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Finally workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Framework\Finally.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="Config">[Config]</InOutArgument>
-                    <InOutArgument x:TypeArguments="x:String" x:Key="TransactionID">[TransactionID]</InOutArgument>
-                    <InOutArgument x:TypeArguments="s:Exception" x:Key="ProcessException">[ProcessException]</InOutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
+                <kf:Finally Config="[Config]" sap2010:WorkflowViewState.IdRef="Finally_2" ProcessException="[ProcessException]" TransactionID="[TransactionID]" />
               </TryCatch.Finally>
             </TryCatch>
           </FlowStep>
@@ -154,7 +141,7 @@
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>dyZWOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbCFFA54BDwIBAUg0SNwBAgECTQlnFAIBGmoNlgEYAgEDUDpQTwIBG1ILXRACASheC2YjAgEcbBF4HAIBEo4BEZQBKQIBCoABFYkBIAIBBFKpAVLCAQIBKVQPWxgCAStkTGRbAgEmYGlgcQIBJGJVYmcCASJhT2FeAgEgY0ljVQIBHl63AV7MAQIBHW0TciUCARdzE3crAgETkAFvkAF3AgEQkgFbkgFtAgEOkQFVkQFkAgEMjgHAAY4B2AECAQuBAReIASACAQVZOllqAgEuVjtWRwIBLHBfcIMBAgEZb1VvbwIBGHV0dXwCARVzwgFz0AECARSGAUWGAVACAQiDAUaDAVgCAQY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dyZWOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbB9GA5EBDwIBAUk0SdwBAgECTglgFAIBGWMNiQEYAgEDUTpRTwIBGlMLXhACASZfC1/RAQIBG2URcRwCARGHARGHAaMBAgEKeRWCASACAQRTqQFTwgECASdVD1wYAgEpX5QBX6UBAgEkXxtfJQIBIl83X0sCASBfWl9rAgEeX3dfhQECARxmE2slAgEWbBNwKwIBEocBJIcBLgIBD4cBbIcBgAECAQ2HAY8BhwGgAQIBC3oXgQEgAgEFWjpaagIBLFc7V0cCASppX2mDAQIBGGhVaG8CARdudG58AgEUbMIBbNABAgETf0V/UAIBCHxGfFgCAQY=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -174,14 +161,8 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_7" sap:VirtualizedContainerService.HintSize="464,87">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486,630">
+      <sap2010:ViewStateData Id="Init_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486,565">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -228,7 +209,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_6" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Finally_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="TryCatch_3" sap:VirtualizedContainerService.HintSize="200,78">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
