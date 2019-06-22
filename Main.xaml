@@ -79,7 +79,7 @@
             <Variable x:TypeArguments="x:String" Name="configPath" />
             <Variable x:TypeArguments="x:String" Default="c:/temp/Config.xlsx" Name="devConfigPath" />
           </Sequence.Variables>
-          <If sap2010:Annotation.AnnotationText="configPathが空なら本番で、”Data/Config.xlsx”を使う。指定したらソレを使う。devConfigPathに指定したパスにファイルがあれば、ソレを使う（このファイルは開発時にしかおかない想定）" Condition="[configPath is nothing]" DisplayName="条件分岐" sap2010:WorkflowViewState.IdRef="If_1">
+          <If sap2010:Annotation.AnnotationText="configPathが空なら本番で、”Data/Config.xlsx”を使う。指定したらソレを使う。devConfigPathに指定したパスにファイルがあれば、ソレを使う(このファイルは開発時にしかおかない想定)" Condition="[configPath is nothing]" DisplayName="条件分岐" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
               <Assign sap2010:Annotation.AnnotationText="相対パスをカスタムアクティビティに渡すと、アクティビティの場所からのフルパスになるので、呼びだし元からフルパスを生成して渡すことで、ワークフローファイルからの相対場所にする" DisplayName="代入" sap2010:WorkflowViewState.IdRef="Assign_4">
                 <Assign.To>
@@ -168,20 +168,20 @@
       <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,352">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_7" sap:VirtualizedContainerService.HintSize="314,87">
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_7" sap:VirtualizedContainerService.HintSize="464,87">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="336,344">
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486,630">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
