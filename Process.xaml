@@ -67,13 +67,48 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Description: In this file all other process specific files will be invoked.  &#xA;If there are many decisions, a Flowchart should be used instead." DisplayName="Process" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence sap2010:Annotation.AnnotationText="Initialization of input data and Open Applications" DisplayName="Initialization" sap2010:WorkflowViewState.IdRef="Sequence_2" />
-    <Sequence sap2010:Annotation.AnnotationText="Actual Processing" DisplayName="Process" sap2010:WorkflowViewState.IdRef="Sequence_3" />
+    <Sequence sap2010:Annotation.AnnotationText="Actual Processing" DisplayName="Process" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="繰り返し (コレクションの各要素)" Values="[in_Config.Keys]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:String">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body">
+              <ui:LogMessage DisplayName="メッセージをログ" Level="Info" Message="[&quot;Key:&quot; + item +&quot;, value:&quot; + in_Config(item).ToString]" sap2010:WorkflowViewState.IdRef="LogMessage_1" />
+              <sap2010:WorkflowViewState.IdRef>Sequence_5</sap2010:WorkflowViewState.IdRef>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap2010:WorkflowViewState.IdRef>ForEach`1_1</sap2010:WorkflowViewState.IdRef>
+      </ui:ForEach>
+      <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="アプリケーションを開く 'notepad.exe  無題 - メモ帳'" FileName="C:\Windows\system32\notepad.exe" InformativeScreenshot="0d5958da0ed892c0d5698844d151b01c" Selector="&lt;wnd app='notepad.exe' cls='Notepad' title='無題 - メモ帳' /&gt;">
+        <ui:OpenApplication.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do">
+              <Delay DisplayName="待機" Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              <ui:CloseApplication DisplayName="アプリケーションを閉じる">
+                <ui:CloseApplication.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                </ui:CloseApplication.Target>
+                <sap2010:WorkflowViewState.IdRef>CloseApplication_1</sap2010:WorkflowViewState.IdRef>
+              </ui:CloseApplication>
+              <sap2010:WorkflowViewState.IdRef>Sequence_6</sap2010:WorkflowViewState.IdRef>
+            </Sequence>
+          </ActivityAction>
+        </ui:OpenApplication.Body>
+        <sap2010:WorkflowViewState.IdRef>OpenApplication_1</sap2010:WorkflowViewState.IdRef>
+      </ui:OpenApplication>
+    </Sequence>
     <Sequence sap2010:Annotation.AnnotationText="Writing output data, Close Applications, Send Email" DisplayName="End Process" sap2010:WorkflowViewState.IdRef="Sequence_4" />
-    <sads:DebugSymbol.Symbol>dzdDOlxVc2Vyc1xTaWx2aXVcRGVza3RvcFxBdHRlbmRlZF9GcmFtZVdvcmtcUHJvY2Vzcy54YW1sBEQDSQ4CAQFFBUWyAQIBBEYFRooBAgEDRwVHsAECAQI=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dylaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXFByb2Nlc3MueGFtbBBEA2wOAgEBRQVFsgECARBGBWkQAgEDagVqsAECAQJHB1QUAgELVQdoHAIBBEdtR38CAQ9NDVAYAgEMVZ0CVd0CAgEKVbkBVdoBAgEJWw1kGAIBBU4PTsgBAgENXA9cZwIBB10PYiUCAQZOSk6WAQIBDlwwXDoCAQg=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="200,141">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="436,141">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -82,7 +117,33 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200,126">
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="336,215">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="414,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="CloseApplication_1" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="336,254">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,400" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="436,642">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -91,7 +152,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="200,141">
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="436,141">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -100,7 +161,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,699">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="458,1170">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

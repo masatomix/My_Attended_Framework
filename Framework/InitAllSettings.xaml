@@ -72,6 +72,8 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
@@ -84,6 +86,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)">[new Dictionary(of String, GenericValue)]</InArgument>
       </Assign.Value>
     </Assign>
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="メッセージボックス" Text="[System.IO.Path.GetFullPath(in_ConfigFile)]" TopMost="True" sap2010:WorkflowViewState.IdRef="MessageBox_1" />
     <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each sheet &lt;string&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_configSheets]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
@@ -185,11 +188,12 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <sads:DebugSymbol.Symbol>d0lDOlxVc2Vyc1xTaWx2aXVcRGVza3RvcFxBdHRlbmRlZF9GcmFtZVdvcmtcRnJhbWV3b3JrXEluaXRBbGxTZXR0aW5ncy54YW1sKgGjAQHSAQEDAWoBewECTgO9AQ4CAQFPBVYOAgEwVwV6EgIBHXsFuwEQAgECVFFUegIBM1FSUV4CATFXpQFXuAECAS5dC3cWAgEefQmvARQCAQW3AQ23AaEBAgEDYQ1h3QECASdiDXYdAgEfgQELgQHTAQIBF4IBC64BGwIBBrcBe7cBngECAQRhSGFXAgEsYbIBYbsBAgEqYckBYdoBAgEoYj5iTQIBJWgTcxgCASCBAUaBAVACARuBAakBgQGxAQIBGoEBvwGBAdABAgEYggE8ggFGAgEViAERqwEcAgEHaCFoYgIBIWoXcSACASKKARWbASACAQyjARmnAR4CAQhvSW9pAgEkbEpscQIBI44BF5IBKgIBEZMBF5oBIAIBDaMBJ6MBZAIBCaUBHaUB+QECAQqQAUqQAVYCAROOAUiOAWsCARKYAUmYAVUCAQ+VAUqVAWwCAQ6lAYoBpQH2AQIBCw==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dztaOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXEZyYW1ld29ya1xJbml0QWxsU2V0dGluZ3MueGFtbCwBowEB0gEBAwFqAXsBAlADwAEOAgEBUQVYDgIBM1kFWdcBAgEwWgV9EgIBHX4FvgEQAgECVlFWegIBNlNSU14CATRZaVmWAQIBMVqlAVq4AQIBLmALehYCAR6AAQmyARQCAQW6AQ26AaEBAgEDZA1k3QECASdlDXkdAgEfhAELhAHTAQIBF4UBC7EBGwIBBroBe7oBngECAQRkSGRXAgEsZLIBZLsBAgEqZMkBZNoBAgEoZT5lTQIBJWsTdhgCASCEAUaEAVACARuEAakBhAGxAQIBGoQBvwGEAdABAgEYhQE8hQFGAgEViwERrgEcAgEHayFrYgIBIW0XdCACASKNARWeASACAQymARmqAR4CAQhySXJpAgEkb0pvcQIBI5EBF5UBKgIBEZYBF50BIAIBDaYBJ6YBZAIBCagBHagB+QECAQqTAUqTAVYCARORAUiRAWsCARKbAUmbAVUCAQ+YAUqYAWwCAQ6oAYoBqAH2AQIBCw==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="532,60" />
+      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="532,59" />
       <sap2010:ViewStateData Id="ReadRange_2" sap:VirtualizedContainerService.HintSize="494,87" />
       <sap2010:ViewStateData Id="Assign_15" sap:VirtualizedContainerService.HintSize="242,60" />
       <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,208" />
@@ -271,7 +275,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="554,2161">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="554,2260">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -279,7 +283,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetAllSettings_1" sap:VirtualizedContainerService.HintSize="594,2241" />
+      <sap2010:ViewStateData Id="GetAllSettings_1" sap:VirtualizedContainerService.HintSize="594,2340" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
