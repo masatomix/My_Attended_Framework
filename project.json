@@ -9,7 +9,8 @@
     "UiPath.System.Activities": "18.3.6877.28276",
     "Microsoft.Activities.Extensions": "2.0.6.9",
     "Microsoft.Activities": "1.0.1",
-    "UiPath.Mail.Activities": "1.2.6863.29868"
+    "UiPath.Mail.Activities": "1.2.6863.29868",
+    "kino.UiPath.MyAttendedFramework": "[0.0.7112.41296]"
   },
   "schemaVersion": "3.2",
   "studioVersion": "18.2",
