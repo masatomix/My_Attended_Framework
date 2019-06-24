@@ -15,11 +15,11 @@ https://go.uipath.com/component/attended-framework
 - 変数をOrchestratorのAssetから読み込む機能
 - ワークフロー全体をtry/catchすることで、システム例外(Application Exception)発生にスクリーンキャプチャを取得してくれる機能
 
-という機能を持った便利なフレームワークのテンプレートです。。
+という機能を持った便利なフレームワーク(のテンプレート)です。
 
-設定ファイルの読み込み場所が、"Data¥Config.xlsx" と固定的だったので、下記の対応を入れることにしました。
+ただ、設定ファイルの読み込み場所が"Data¥Config.xlsx" と固定的だったので、下記の対応を入れることにしました。
 
-テンプレートはデフォルトでは
+今回公開したテンプレートは、デフォルトでは
 
 - configPath = カラ : 本番用設定ファイルを置く場所
 - devConfigPath = "C:\Temp\Config.xlsx" : 開発用設定ファイルを置く場所
