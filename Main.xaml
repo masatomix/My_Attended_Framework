@@ -65,6 +65,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="REFrameWork for Attended Robot, based on the REFrameWork for simple and linear processes.&#xA;Compatible with the REFrameWork in terms of reusable components, logging fields and messages." DisplayName="Main" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -92,7 +93,7 @@
               </Assign>
             </If.Then>
           </If>
-          <kf:Init Config="[Config]" ProcessException="[ProcessException]" TransactionID="[TransactionID]" configPath="[configPath]" devConfigPath="[devConfigPath]" sap2010:WorkflowViewState.IdRef="Init_1" />
+          <kf:Init Config="[Config]" sap2010:WorkflowViewState.IdRef="Init_1" ProcessException="[ProcessException]" TransactionID="[TransactionID]" configPath="[configPath]" devConfigPath="[devConfigPath]" />
         </Sequence>
         <FlowStep.Next>
           <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
@@ -132,7 +133,7 @@
                 </Catch>
               </TryCatch.Catches>
               <TryCatch.Finally>
-                <kf:Finally Config="[Config]" sap2010:WorkflowViewState.IdRef="Finally_2" ProcessException="[ProcessException]" TransactionID="[TransactionID]" />
+                <kf:Finally Config="[Config]" sap2010:WorkflowViewState.IdRef="Finally_2" ProcessException="[ProcessException]" TransactionID="[TransactionID]" baseDir="[System.IO.Directory.GetCurrentDirectory]" />
               </TryCatch.Finally>
             </TryCatch>
           </FlowStep>
@@ -141,7 +142,7 @@
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <sads:DebugSymbol.Symbol>dyZWOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbB9GA5EBDwIBAUk0SdwBAgECTglgFAIBGWMNiQEYAgEDUTpRTwIBGlMLXhACASZfC1/RAQIBG2URcRwCARGHARGHAaMBAgEKeRWCASACAQRTqQFTwgECASdVD1wYAgEpX5QBX6UBAgEkXxtfJQIBIl83X0sCASBfWl9rAgEeX3dfhQECARxmE2slAgEWbBNwKwIBEocBJIcBLgIBD4cBbIcBgAECAQ2HAY8BhwGgAQIBC3oXgQEgAgEFWjpaagIBLFc7V0cCASppX2mDAQIBGGhVaG8CARdudG58AgEUbMIBbNABAgETf0V/UAIBCHxGfFgCAQY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dyZWOlxnaXRcTXlfQXR0ZW5kZWRfRnJhbWV3b3JrXE1haW4ueGFtbCBHA5IBDwIBAUo0StwBAgECTwlhFAIBGmQNigEYAgEDUjpSTwIBG1QLXxACASdgC2DRAQIBHGYRchwCARKIARGIAdcBAgEKehWDASACAQRUqQFUwgECAShWD10YAgEqYL0BYM4BAgElYBtgJQIBI2BgYHQCASFggwFglAECAR9goAFgrgECAR1nE2wlAgEXbRNxKwIBE4gBqQGIAdQBAgERiAEkiAEuAgEPiAFsiAGAAQIBDYgBjwGIAaABAgELexeCASACAQVbOltqAgEtWDtYRwIBK2pfaoMBAgEZaVVpbwIBGG90b3wCARVtwgFt0AECARSAAUWAAVACAQh9Rn1YAgEG</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -162,7 +163,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Init_1" sap:VirtualizedContainerService.HintSize="464,22" />
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486,565">
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="200,108">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -210,7 +211,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Finally_2" sap:VirtualizedContainerService.HintSize="200,22" />
-      <sap2010:ViewStateData Id="TryCatch_3" sap:VirtualizedContainerService.HintSize="200,78">
+      <sap2010:ViewStateData Id="TryCatch_3" sap:VirtualizedContainerService.HintSize="418,314">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -247,7 +248,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654,758" />
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654,798" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
